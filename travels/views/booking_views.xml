@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- travels/views/booking_views.xml -->
+    <odoo>
+        <record id="view_booking_list" model="ir.ui.view">
+            <field name="name">travel.booking.list</field>
+            <field name="model">travel.booking</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="customer_name"/>
+                    <field name="destination"/>
+                    <field name="travel_date"/>
+                    <field name="is_confirmed"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_booking_form" model="ir.ui.view">
+            <field name="name">travel.booking.form</field>
+            <field name="model">travel.booking</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="destination"/>
+                            <field name="travel_date"/>
+                            <field name="is_confirmed"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_travel_main" name="Travel" sequence="10"/>
+        <menuitem id="menu_travel_booking" name="Bookings" parent="menu_travel_main" action="action_booking"/>
+
+        <record id="action_booking" model="ir.actions.act_window">
+            <field name="name">Travel Bookings</field>
+            <field name="res_model">travel.booking</field>
+            <field name="view_mode">list,form</field>
+        </record>
+    </odoo>
